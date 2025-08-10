@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // We'll use axios which we installed earlier
+import axios from 'axios';
 import './App.css';
 
 function App() {
@@ -17,8 +17,6 @@ function App() {
       return;
     }
 
-    // This is the key change: It uses the live URL on Vercel,
-    // or falls back to your local server for testing.
     const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
 
     try {
@@ -26,7 +24,10 @@ function App() {
         longUrl: longUrl,
       });
 
-      // Construct the full clickable short URL using the backend's address
+      // ---- THIS IS THE NEW DEBUGGING LINE ----
+      console.log('Backend Response:', response.data); 
+      // -----------------------------------------
+
       const fullShortUrl = `${backendUrl}/${response.data.short_code}`;
       setShortenedUrl(fullShortUrl);
       setLongUrl('');
