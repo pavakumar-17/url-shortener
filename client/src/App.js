@@ -24,11 +24,11 @@ function App() {
         longUrl: longUrl,
       });
 
-      // ---- THIS IS THE NEW DEBUGGING LINE ----
-      console.log('Backend Response:', response.data); 
-      // -----------------------------------------
+      // ---- THIS IS THE FINAL FIX ----
+      // Use "urlCode" which matches the actual response from your backend
+      const fullShortUrl = `${backendUrl}/${response.data.urlCode}`;
+      // -----------------------------
 
-      const fullShortUrl = `${backendUrl}/${response.data.short_code}`;
       setShortenedUrl(fullShortUrl);
       setLongUrl('');
 
